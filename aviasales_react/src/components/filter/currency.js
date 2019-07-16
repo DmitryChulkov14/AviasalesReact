@@ -12,7 +12,7 @@ class Currency extends React.Component {
                 <div className="currencyHeader">ВАЛЮТА</div>
                     <div className="currencyButtons">
                         {this.currencies.map((value, id) => {
-                            return (<CurrencyButton key={id} value={value} changeCurrentCurrency={this.props.changeCurrentCurrency}/>);
+                            return (<CurrencyButton key={id} value={value} />);
                         })}
                     </div>
             </div>

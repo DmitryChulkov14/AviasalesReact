@@ -42,12 +42,22 @@
     cursor: pointer;
 }
 
-.currencyButtons button:first-child {
+.currencyButton:focus {
+    background-color: blue;
+    color: white;
+}
+
+.activeButton {
+    background-color: blue;
+    color: white;
+}
+
+.currencyButtons input:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-.currencyButtons button:last-child {
+.currencyButtons input:last-child {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }

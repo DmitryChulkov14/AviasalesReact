@@ -2,6 +2,7 @@ import React from 'react';
 
 import companyLogo from "../../../images/logo.png";
 import airplane from "../../../images/airplane.png";
+import {connect} from "react-redux";
 
 const moment = require('moment');
 require("moment/min/locales.min");
@@ -9,8 +10,7 @@ require("moment/min/locales.min");
 class Ticket extends React.Component {
 
     getStops = () => {
-        let stops = this.props.ticket.stops;
-        switch (stops) {
+        switch (this.props.ticket.stops) {
             case 0:
                 return 'БЕЗ ПЕРЕСАДОК';
             case 1:
@@ -21,6 +21,17 @@ class Ticket extends React.Component {
                 return '3 ПЕРЕСАДКИ';
             default:
                 return '';
+        }
+    };
+
+    getRatePrice = () => {
+        switch (this.props.currency) {
+            case 'USD':
+                return (this.props.ticket.price * 0.016).toFixed(1);
+            case 'EUR':
+                return (this.props.ticket.price * 0.014).toFixed(1);
+            default:
+                return this.props.ticket.price;
         }
     };
 
@@ -53,13 +64,16 @@ class Ticket extends React.Component {
                 <div className="buyingForm">
                     <img src={companyLogo} className="companyLogo" alt="Turkish Airlines" />
                     <form className="buyForm" onSubmit={null}>
-                        <button className="buy">Купить<br/>за {this.props.ticket.price} {this.props.currentCurrency}</button>
+                        <button className="buy">Купить<br/>за {this.getRatePrice()} {this.props.currency}</button>
                     </form>
                 </div>
-
             </div>
         );
     }
 }
 
-export default Ticket;
+export default connect(
+    state => ({
+        currency: state.currencyReducer.currency,
+    }),
+) (Ticket);

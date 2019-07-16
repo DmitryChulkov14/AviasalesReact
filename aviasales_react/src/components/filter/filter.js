@@ -7,7 +7,7 @@ class Filter extends React.Component {
     render() {
         return(
             <div className="filter">
-                <Currencys changeCurrentCurrency={this.props.changeCurrentCurrency}/>
+                <Currencys/>
                 <Transfer/>
             </div>
         );

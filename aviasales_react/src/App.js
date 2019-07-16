@@ -1,31 +1,24 @@
 import React from 'react';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
 import Header from './components/header';
 import Filter from "./components/filter/filter";
 import Tickets from "./components/tickets/tickets";
+import reducers from "./reducers";
+
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends React.Component {
-
-    state = {
-        currentCurrency: 'RUB',
-    };
-
-
-    changeCurrentCurrency = (currency) => {
-        this.setState({
-            currentCurrency: currency.target.value}
-        ,()=>{
-            console.log(this.state.currentCurrency);
-
-        });
-    };
 
     render() {
         return (
             <div className="body">
-                <Header/>
-                <Filter changeCurrentCurrency={this.changeCurrentCurrency}/>
-                <Tickets currentCurrency={this.state.currentCurrency}/>
+                <Provider store={store}>
+                    <Header/>
+                    <Filter/>
+                    <Tickets/>
+                </Provider>
             </div>
         );
     }

@@ -10,10 +10,10 @@ class Transfer extends React.Component {
                 <div>КОЛИЧЕСТВО ПЕРЕСАДОК</div>
                 <div className="transferOptions">
                     <Checkbox id={'all'} name={'Все'} checked={true}/>
-                    <Checkbox id={'direct'} name={'Без пересадок'}/>
-                    <Checkbox id={'one-transfer'} name={'1 пересадка'}/>
-                    <Checkbox id={'two-transfers'} name={'2 пересадки'}/>
-                    <Checkbox id={'three-transfers'} name={'3 пересадки'}/>
+                    <Checkbox id={'0'} name={'Без пересадок'}/>
+                    <Checkbox id={'1'} name={'1 пересадка'}/>
+                    <Checkbox id={'2'} name={'2 пересадки'}/>
+                    <Checkbox id={'3'} name={'3 пересадки'}/>
                 </div>
             </div>
         );
