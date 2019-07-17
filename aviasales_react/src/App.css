@@ -4,7 +4,7 @@
 
 .filter {
     width: 200px;
-    height: 210px;
+    height: 230px;
     display: inline-block;
     border-radius: 10px;
     background-color: white;
@@ -163,8 +163,28 @@
     color: gray;
     height: 2px;
     flex: 1;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .stops {
     color: gray;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+label {
+    margin-bottom: 0;
+}
+
+.fade:not(.show) {
+    opacity: 1;
+}
+
+.modal {
+    display: block;
+    top: 50px;
+    overflow: visible;
 }

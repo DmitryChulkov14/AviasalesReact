@@ -13,7 +13,7 @@ class Tickets extends React.Component {
                sortedTicketsByStops = flightData.tickets;
            } else {
                flightData.tickets.forEach(ticket => {
-                   if (ticket.stops == stop) {
+                   if (parseInt(ticket.stops) === parseInt(stop) && !sortedTicketsByStops.includes(ticket)) {
                        sortedTicketsByStops.push(ticket);
                    }
                });

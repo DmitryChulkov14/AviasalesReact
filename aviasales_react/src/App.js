@@ -5,6 +5,7 @@ import {createStore} from 'redux';
 import Header from './components/header';
 import Filter from "./components/filter/filter";
 import Tickets from "./components/tickets/tickets";
+import Modal from "./components/modal/modal";
 import reducers from "./reducers";
 
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -15,6 +16,7 @@ class App extends React.Component {
         return (
             <div className="body">
                 <Provider store={store}>
+                    <Modal/>
                     <Header/>
                     <Filter/>
                     <Tickets/>

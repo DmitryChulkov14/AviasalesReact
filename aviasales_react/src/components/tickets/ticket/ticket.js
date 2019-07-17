@@ -2,14 +2,16 @@ import React from 'react';
 
 import companyLogo from "../../../images/logo.png";
 import airplane from "../../../images/airplane.png";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { openModal } from "../../modal/actions";
+import UserModal from "../../modal/userInfoModal";
 
 const moment = require('moment');
 require("moment/min/locales.min");
 
 class Ticket extends React.Component {
 
-    getStops = () => {
+    getStops() {
         switch (this.props.ticket.stops) {
             case 0:
                 return 'БЕЗ ПЕРЕСАДОК';
@@ -24,7 +26,7 @@ class Ticket extends React.Component {
         }
     };
 
-    getRatePrice = () => {
+    getRatePrice(){
         switch (this.props.currency) {
             case 'USD':
                 return (this.props.ticket.price * 0.016).toFixed(1);
@@ -33,6 +35,13 @@ class Ticket extends React.Component {
             default:
                 return this.props.ticket.price;
         }
+    };
+
+    buyTicket = () => {
+        this.props.dispatch(openModal({
+            title: 'Подтверждение покупки билета',
+            content: <UserModal />
+        }));
     };
 
     render() {
@@ -63,9 +72,9 @@ class Ticket extends React.Component {
                 </div>
                 <div className="buyingForm">
                     <img src={companyLogo} className="companyLogo" alt="Turkish Airlines" />
-                    <form className="buyForm" onSubmit={null}>
-                        <button className="buy">Купить<br/>за {this.getRatePrice()} {this.props.currency}</button>
-                    </form>
+                    <div className="buyForm">
+                        <button className="buy" onClick={this.buyTicket}>Купить<br/>за {this.getRatePrice()} {this.props.currency}</button>
+                    </div>
                 </div>
             </div>
         );
